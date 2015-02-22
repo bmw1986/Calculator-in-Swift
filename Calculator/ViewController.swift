@@ -13,13 +13,15 @@ class ViewController: UIViewController {
    
     @IBOutlet weak var display: UILabel!
     
-    var displayText:[Int] = []
+    var displayText:[String] = []
+    
+    var operations = 0
     
     
     @IBAction func clear(sender: AnyObject) {
         
         displayText.removeAll(keepCapacity: true)
-        displayText.append(0)
+        displayText.append("0")
         writeToDisplay()
     }
     
@@ -32,97 +34,100 @@ class ViewController: UIViewController {
     
     @IBAction func enter(sender: AnyObject) {
     
-        displayText.append(0)
-        writeToDisplay()
+        calculateResult()
     }
     
     @IBAction func add(sender: AnyObject) {
         
-        displayText.append(0)
+        displayText.append("+")
+        operations++
         writeToDisplay()
     }
     
     @IBAction func subtract(sender: AnyObject) {
         
-        displayText.append(0)
+        displayText.append("-")
+        operations++
         writeToDisplay()
     }
     
     @IBAction func multiply(sender: AnyObject) {
         
-        displayText.append(0)
+        displayText.append("x")
+        operations++
         writeToDisplay()
     }
     
     @IBAction func divide(sender: AnyObject) {
         
-        displayText.append(0)
+        displayText.append("/")
+        operations++
         writeToDisplay()
     }
     
     @IBAction func decimal(sender: AnyObject) {
         
-        displayText.append(0)
+        displayText.append(".")
         writeToDisplay()
     }
     
     @IBAction func zero(sender: AnyObject) {
         
-        displayText.append(0)
+        displayText.append("0")
         writeToDisplay()
     }
     
     @IBAction func one(sender: AnyObject) {
         
-        displayText.append(1)
+        displayText.append("1")
         writeToDisplay()
     }
     
     @IBAction func two(sender: AnyObject) {
         
-        displayText.append(2)
+        displayText.append("2")
         writeToDisplay()
     }
     
     @IBAction func three(sender: AnyObject) {
         
-        displayText.append(3)
+        displayText.append("3")
         writeToDisplay()
     }
     
     @IBAction func four(sender: AnyObject) {
         
-        displayText.append(4)
+        displayText.append("4")
         writeToDisplay()
     }
     
     @IBAction func five(sender: AnyObject) {
         
-        displayText.append(5)
+        displayText.append("5")
         writeToDisplay()
     }
     
     @IBAction func six(sender: AnyObject) {
         
-        displayText.append(6)
+        displayText.append("6")
         writeToDisplay()
     }
     
     @IBAction func seven(sender: AnyObject) {
         
-        displayText.append(7)
+        displayText.append("7")
         writeToDisplay()
     }
     
     @IBAction func eight(sender: AnyObject) {
         
-        displayText.append(8)
+        displayText.append("8")
         writeToDisplay()
     }
     
     @IBAction func nine(sender: AnyObject) {
         
-        displayText.append(9)
+        displayText.append("9")
         writeToDisplay()
     }
     
@@ -139,8 +144,12 @@ class ViewController: UIViewController {
         display.text = textToDisplay
     }
     
-    
-    
+    func calculateResult() {
+        
+        if (operations != 0) {
+            display.text = "Answer"
+        }
+    }
     
     
     
