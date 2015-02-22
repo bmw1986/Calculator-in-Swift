@@ -53,6 +53,9 @@
                                 <state key="normal" title="mr / mc">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="backspace:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yvF-Jy-O7c"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxU-aO-mdM">
                                 <rect key="frame" x="266" y="206" width="30" height="30"/>

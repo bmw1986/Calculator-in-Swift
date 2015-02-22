@@ -18,16 +18,22 @@ class ViewController: UIViewController {
     
     @IBAction func clear(sender: AnyObject) {
         
+        displayText.removeAll(keepCapacity: true)
+        displayText.append(0)
+        writeToDisplay()
+    }
+    
+    @IBAction func backspace(sender: AnyObject) {
+        
         displayText.removeLast()
         writeToDisplay()
-        
     }
+    
     
     @IBAction func enter(sender: AnyObject) {
     
         displayText.append(0)
         writeToDisplay()
-        
     }
     
     @IBAction func add(sender: AnyObject) {
@@ -127,7 +133,6 @@ class ViewController: UIViewController {
         var textToDisplay = ""
         
         for (var i = 0; i < displayText.count; i++) {
-            
             textToDisplay = " \(textToDisplay)" + "\(displayText[i])"
         }
         
