@@ -1,0 +1,6 @@
+Some notes
+
+  - switch the array that is tracking what goes to the display to a [String] again.
+  - then convert the Strings to Ints for calculation.
+  - this will get rid of the issue of two digit numbers throwing of theCount
+  - get rid of theCount...its stupid
