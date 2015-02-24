@@ -16,12 +16,13 @@ class ViewController: UIViewController {
     var add = false; var subtract = false; var multiply = false; var divide = false
     var operations = 0
     var theCount = 0
+    var writeAZero = false
     var displayText:[Int] = []
     
     @IBAction func clear(sender: AnyObject) {
         
         displayText.removeAll(keepCapacity: true)
-        displayText.append(0)
+        writeAZero = true
         add = false
         subtract = false
         multiply = false
@@ -143,22 +144,46 @@ class ViewController: UIViewController {
     
     func writeToDisplay() {
         
+        var text = ""
+        var newText = ""
+        
         if (add == true) {
-            var text = convertArrayToString()
-            text = text + "+"
+            if (theCount >= 2){
+                newText = convertArrayToString()
+            } else {
+                text = convertArrayToString()
+                newText = text + "+"
+            }
         } else if (subtract == true) {
-            var text = convertArrayToString()
-            text = text + "-"
+            if (theCount >= 2){
+                newText = convertArrayToString()
+            } else {
+                text = convertArrayToString()
+                newText = text + "-"
+            }
+
         } else if (multiply == true) {
-            var text = convertArrayToString()
-            text = text + "x"
+            if (theCount >= 2){
+                newText = convertArrayToString()
+            } else {
+                text = convertArrayToString()
+                newText = text + "x"
+            }
         } else if (divide == true) {
-            var text = convertArrayToString()
-            text = text + "/"
+            if (theCount >= 2){
+                newText = convertArrayToString()
+            } else {
+                text = convertArrayToString()
+                newText = text + "/"
+            }
+        } else if (writeAZero == true) {
+            newText = "0"
+            writeAZero = false
+        } else {
+            newText = convertArrayToString()
         }
 
-        var text = convertArrayToString()
-        display.text = text
+        display.text = newText
     }
     
     func convertArrayToString() -> String {
