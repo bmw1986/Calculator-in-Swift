@@ -22,6 +22,11 @@ class ViewController: UIViewController {
         
         displayText.removeAll(keepCapacity: true)
         displayText.append(0)
+        add = false
+        subtract = false
+        multiply = false
+        divide = false
+        theCount = 0
         writeToDisplay()
     }
     
@@ -136,11 +141,22 @@ class ViewController: UIViewController {
         writeToDisplay()
     }
     
-    
-    
-    
     func writeToDisplay() {
         
+        if (add == true) {
+            var text = convertArrayToString()
+            text = text + "+"
+        } else if (subtract == true) {
+            var text = convertArrayToString()
+            text = text + "-"
+        } else if (multiply == true) {
+            var text = convertArrayToString()
+            text = text + "x"
+        } else if (divide == true) {
+            var text = convertArrayToString()
+            text = text + "/"
+        }
+
         var text = convertArrayToString()
         display.text = text
     }
@@ -160,25 +176,39 @@ class ViewController: UIViewController {
         
         var pos = 0
         var textToDisplay:String = ""
+        var answer = 0
         
-        if (operations != 0) {
+        textToDisplay = convertArrayToString()
+        
+        if (theCount == 2) {
             
-            textToDisplay = convertArrayToString()
-            
-            if (theCount == 2) {
-                
-                
+            if (add == true) {
+                answer = displayText[0] + displayText[1]
+                displayText.removeLast()
+                displayText[0] = answer
+                add = false
+            } else if (subtract == true) {
+                answer = displayText[0] - displayText[1]
+                displayText.removeLast()
+                displayText[0] = answer
+                subtract = false
+            } else if (multiply == true) {
+                answer = displayText[0] * displayText[1]
+                displayText.removeLast()
+                displayText[0] = answer
+                multiply = false
+            } else if (divide == true) {
+                answer = displayText[0] / displayText[1]
+                displayText.removeLast()
+                displayText[0] = answer
+                divide = false
+            } else {
+                println("Reached the else clause")
             }
             
-            
-            
-            
-            
-            display.text = "Answer"
+            display.text = String(answer)
         }
     }
-    
-    
     
     
     override func viewDidLoad() {
