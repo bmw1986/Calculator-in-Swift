@@ -1,6 +1,37 @@
 Some notes
 
+1/24
   - switch the array that is tracking what goes to the display to a [String] again.
   - then convert the Strings to Ints for calculation.
   - this will get rid of the issue of two digit numbers throwing of theCount
   - get rid of theCount...its stupid
+  
+1/25
+  Goal is 223+48
+  1. Button push 2
+    a. Append a 2 to display      ->  display:String = "2"
+    b. Increase theCount by 1     ->  theCount:Int = 1
+  2. Button push 2
+    a. Append a 2 to display      ->  display:String = "22"
+    b. Increase theCount by 1     ->  theCount:Int = 2
+  3. Button push 3
+    a. Append a 3 to display      ->  display:Stirng = "223"
+    b. Increase theCount by 1     ->  theCount:Int = 3
+  4. Button push +
+    a. Append a + to the display                    -> display:String = "223+"
+    b. firstValue = display.subString(0, theCount)  -> firstValue:Int = 223
+    c. reset theCount                               -> theCount = 0
+    d. Set add:Bool to true                         -> add:Bool = true
+  5. Button push 4
+    a. Append a 4 to display      -> display:String = "223+4"
+    b. Button push = secondValue  -> secondValue:String = "4"
+  6. Button push 8   
+    a. Append an 8 to display     -> display:String = "223+48"
+    b. Append to buttonPush       -> secondValue = "48"
+  7. Button push = or + or - ect
+    a. Since add is true then add firstValue and secondValue and store as answer
+    b. Clear display and send answer to it
+    c. reset add to false
+    d. reset everything else
+    e. if +-x/ pushed then store answer as firstValue
+    f. Otherwise start over
