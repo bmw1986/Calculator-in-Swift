@@ -204,11 +204,18 @@ class ViewController: UIViewController {
 		divide = false
 		secondValueReady = 0
 		calculate = false
+        displayText = ""
 	}
 	
 	func makeSubstring(startValue: Int = 0, endValue: Int = 0) -> Int {
 		
-        var x:Int = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, startValue), end: advance(displayText.endIndex, endValue))).toInt()!
+        var x:Int = 0
+        
+        if (theCount != 0) {
+            x = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, startValue), end: advance(displayText.endIndex, endValue))).toInt()!
+        } else {
+            x = 0
+        }
 		
 		return x
 	}
@@ -218,8 +225,13 @@ class ViewController: UIViewController {
         var pos = 0
 		var answer = 0
 		var answerString = ""
+        var secondValue = 0
         
-		var secondValue = secondValueString.toInt()!
+        if (secondValueString != "") {
+            secondValue = secondValueString.toInt()!
+        } else {
+            secondValue = 0
+        }
         
         if (secondValueReady == 2 || calculate == true) {
             
@@ -239,7 +251,8 @@ class ViewController: UIViewController {
         } else {
 			answer = -0
         }
-        
+
+        resetValues()
         return answerString
     }
     
