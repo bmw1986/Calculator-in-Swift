@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         
         //displayText.removeLast()
 		// Removes last char of the string displayText
-		displayText = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -1)))
+		displayText = makeSubstring(0,-1)
         writeToDisplay()
     }
     
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         
         displayText += "+"
         add = true
-        firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
+        firstValue = makeSubstring(0, -theCount)
         theCount = 0
 		secondValueReady++
         secondValueBool = true
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         
         displayText += "-"
         subtract = true
-        firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
+        firstValue = makeSubstring(0, -theCount)
         theCount = 0
 		secondValueReady++
         secondValueBool = true
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         
         displayText += "x"
         multiply = true
-        firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
+        firstValue = makeSubstring(0, -theCount)
         theCount = 0
 		secondValueReady++
         secondValueBool = true
@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         
         displayText += "/"
         divide = true
-        firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
+        firstValue = makeSubstring(0, -theCount)
         theCount = 0
 		secondValueReady++
         secondValueBool = true
@@ -285,6 +285,13 @@ class ViewController: UIViewController {
 		divide = false
 		secondValueReady = 0
 		calculate = false
+	}
+	
+	func makeSubstring(startValue: Int, endValue: Int) -> Int {
+		
+		var x = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, startValue), end: advance(displayText.endIndex, endValue))).toInt()!
+		
+		return x
 	}
     
     func calculateResult() -> String {
