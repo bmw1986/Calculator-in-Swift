@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         
         //displayText.removeLast()
 		// Removes last char of the string displayText
-		displayText = makeSubstring(0,-1)
+        displayText = String(makeSubstring(startValue: 0,endValue: -1))
         writeToDisplay()
     }
     
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         
         displayText += "+"
         add = true
-        firstValue = makeSubstring(0, -theCount)
+        firstValue = makeSubstring(startValue: 0, endValue: -theCount)
         theCount = 0
 		secondValueReady++
         secondValueBool = true
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         
         displayText += "-"
         subtract = true
-        firstValue = makeSubstring(0, -theCount)
+        firstValue = makeSubstring(startValue: 0, endValue: -theCount)
         theCount = 0
 		secondValueReady++
         secondValueBool = true
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         
         displayText += "x"
         multiply = true
-        firstValue = makeSubstring(0, -theCount)
+        firstValue = makeSubstring(startValue: 0, endValue: -theCount)
         theCount = 0
 		secondValueReady++
         secondValueBool = true
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
         
         displayText += "/"
         divide = true
-        firstValue = makeSubstring(0, -theCount)
+        firstValue = makeSubstring(startValue: 0, endValue: -theCount)
         theCount = 0
 		secondValueReady++
         secondValueBool = true
@@ -206,9 +206,9 @@ class ViewController: UIViewController {
 		calculate = false
 	}
 	
-	func makeSubstring(startValue: Int, endValue: Int) -> Int {
+	func makeSubstring(startValue: Int = 0, endValue: Int = 0) -> Int {
 		
-		var x = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, startValue), end: advance(displayText.endIndex, endValue))).toInt()!
+        var x:Int = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, startValue), end: advance(displayText.endIndex, endValue))).toInt()!
 		
 		return x
 	}
@@ -238,8 +238,9 @@ class ViewController: UIViewController {
 			answerString = String(answer)
         } else {
 			answer = -0
-		
-		return answerString
+        }
+        
+        return answerString
     }
     
     
@@ -253,4 +254,3 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
-
