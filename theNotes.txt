@@ -35,3 +35,10 @@ Some notes
     d. reset everything else
     e. if +-x/ pushed then store answer as firstValue
     f. Otherwise start over
+
+1/26
+
+  - When one number is added to another the + sign shows up but disappears once the second number is pushed.
+  - When more than one number is pressed and then the + sign is pushed the + sign never shows up.
+  - Calculations on single digit numbers works.
+  - Multi digit numbers can't be used for calculations.
