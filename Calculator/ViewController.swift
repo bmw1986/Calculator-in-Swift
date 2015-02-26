@@ -16,8 +16,12 @@ class ViewController: UIViewController {
     var add = false; var subtract = false; var multiply = false; var divide = false
     var operations = 0
     var theCount = 0
+    var firstValue = 0
+    var secondValueBool = false
+    var secondValueString = ""
+    var secondValue = 0
     var writeAZero = false
-    var displayText:[Int] = []
+    var displayText = ""
     
     @IBAction func clear(sender: AnyObject) {
         
@@ -33,7 +37,7 @@ class ViewController: UIViewController {
     
     @IBAction func backspace(sender: AnyObject) {
         
-        displayText.removeLast()
+        //displayText.removeLast()
         writeToDisplay()
     }
     
@@ -45,25 +49,41 @@ class ViewController: UIViewController {
     
     @IBAction func add(sender: AnyObject) {
         
+        displayText += "+"
         add = true
+        firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
+        theCount = 0
+        secondValueBool = true
         writeToDisplay()
     }
     
     @IBAction func subtract(sender: AnyObject) {
         
+        displayText += "-"
         subtract = true
+        firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
+        theCount = 0
+        secondValueBool = true
         writeToDisplay()
     }
     
     @IBAction func multiply(sender: AnyObject) {
         
+        displayText += "x"
         multiply = true
+        firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
+        theCount = 0
+        secondValueBool = true
         writeToDisplay()
     }
     
     @IBAction func divide(sender: AnyObject) {
         
+        displayText += "/"
         divide = true
+        firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
+        theCount = 0
+        secondValueBool = true
         writeToDisplay()
     }
     
@@ -74,72 +94,162 @@ class ViewController: UIViewController {
     
     @IBAction func zero(sender: AnyObject) {
         
-        displayText.append(0)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "0"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "0"
+            secondValueString += "0"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func one(sender: AnyObject) {
         
-        displayText.append(1)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "1"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "1"
+            secondValueString += "1"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func two(sender: AnyObject) {
         
-        displayText.append(2)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "2"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "2"
+            secondValueString += "2"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func three(sender: AnyObject) {
         
-        displayText.append(3)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "3"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "3"
+            secondValueString += "3"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func four(sender: AnyObject) {
         
-        displayText.append(4)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "4"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "4"
+            secondValueString += "4"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func five(sender: AnyObject) {
         
-        displayText.append(5)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "5"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "5"
+            secondValueString += "5"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func six(sender: AnyObject) {
         
-        displayText.append(6)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "6"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "6"
+            secondValueString += "6"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func seven(sender: AnyObject) {
         
-        displayText.append(7)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "7"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "7"
+            secondValueString += "7"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func eight(sender: AnyObject) {
         
-        displayText.append(8)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "8"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "8"
+            secondValueString += "8"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     @IBAction func nine(sender: AnyObject) {
         
-        displayText.append(9)
-        theCount++
-        writeToDisplay()
+        if (secondValueBool == false) {
+            displayText += "9"
+            theCount++
+            writeToDisplay()
+        } else if (secondValueBool == true) {
+            displayText += "9"
+            secondValueString += "9"
+            theCount++
+            writeToDisplay()
+        } else {
+            println("Error")
+        }
     }
     
     func writeToDisplay() {
@@ -147,54 +257,12 @@ class ViewController: UIViewController {
         var text = ""
         var newText = ""
         
-        if (add == true) {
-            if (theCount >= 2){
-                newText = convertArrayToString()
-            } else {
-                text = convertArrayToString()
-                newText = text + "+"
-            }
-        } else if (subtract == true) {
-            if (theCount >= 2){
-                newText = convertArrayToString()
-            } else {
-                text = convertArrayToString()
-                newText = text + "-"
-            }
-
-        } else if (multiply == true) {
-            if (theCount >= 2){
-                newText = convertArrayToString()
-            } else {
-                text = convertArrayToString()
-                newText = text + "x"
-            }
-        } else if (divide == true) {
-            if (theCount >= 2){
-                newText = convertArrayToString()
-            } else {
-                text = convertArrayToString()
-                newText = text + "/"
-            }
-        } else if (writeAZero == true) {
-            newText = "0"
-            writeAZero = false
-        } else {
-            newText = convertArrayToString()
-        }
-
-        display.text = newText
+        display.text = convertArrayToString()
     }
     
     func convertArrayToString() -> String {
         
-        var textToDisplay = ""
-        
-        for (var i = 0; i < displayText.count; i++) {
-            textToDisplay = " \(textToDisplay)" + "\(displayText[i])"
-        }
-        
-        return textToDisplay
+        return displayText
     }
     
     func calculateResult() {
@@ -205,27 +273,21 @@ class ViewController: UIViewController {
         
         textToDisplay = convertArrayToString()
         
+        secondValue = secondValueString.toInt()!
+        
         if (theCount == 2) {
             
             if (add == true) {
-                answer = displayText[0] + displayText[1]
-                displayText.removeLast()
-                displayText[0] = answer
+                answer = firstValue + secondValue
                 add = false
             } else if (subtract == true) {
-                answer = displayText[0] - displayText[1]
-                displayText.removeLast()
-                displayText[0] = answer
+                answer = firstValue - secondValue
                 subtract = false
             } else if (multiply == true) {
-                answer = displayText[0] * displayText[1]
-                displayText.removeLast()
-                displayText[0] = answer
+                answer = firstValue * secondValue
                 multiply = false
             } else if (divide == true) {
-                answer = displayText[0] / displayText[1]
-                displayText.removeLast()
-                displayText[0] = answer
+                answer = firstValue / secondValue
                 divide = false
             } else {
                 println("Reached the else clause")
@@ -245,7 +307,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
 }
 
