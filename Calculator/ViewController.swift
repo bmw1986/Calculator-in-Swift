@@ -16,9 +16,11 @@ class ViewController: UIViewController {
     var add = false; var subtract = false; var multiply = false; var divide = false
     var operations = 0
     var theCount = 0
+	var calculate = false
     var firstValue = 0
     var secondValueBool = false
     var secondValueString = ""
+	var secondValueReady = 0
     var secondValue = 0
     var writeAZero = false
     var displayText = ""
@@ -38,13 +40,18 @@ class ViewController: UIViewController {
     @IBAction func backspace(sender: AnyObject) {
         
         //displayText.removeLast()
+		// Removes last char of the string displayText
+		displayText = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -1)))
         writeToDisplay()
     }
     
     
     @IBAction func enter(sender: AnyObject) {
     
-        calculateResult()
+		calculate = true
+        var answer = calculateResult()
+		display.text = answer
+		resetValues()
     }
     
     @IBAction func add(sender: AnyObject) {
@@ -53,6 +60,7 @@ class ViewController: UIViewController {
         add = true
         firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
         theCount = 0
+		secondValueReady++
         secondValueBool = true
         writeToDisplay()
     }
@@ -63,6 +71,7 @@ class ViewController: UIViewController {
         subtract = true
         firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
         theCount = 0
+		secondValueReady++
         secondValueBool = true
         writeToDisplay()
     }
@@ -73,6 +82,7 @@ class ViewController: UIViewController {
         multiply = true
         firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
         theCount = 0
+		secondValueReady++
         secondValueBool = true
         writeToDisplay()
     }
@@ -83,6 +93,7 @@ class ViewController: UIViewController {
         divide = true
         firstValue = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, 0), end: advance(displayText.endIndex, -theCount))).toInt()!
         theCount = 0
+		secondValueReady++
         secondValueBool = true
         writeToDisplay()
     }
@@ -264,37 +275,47 @@ class ViewController: UIViewController {
         
         return displayText
     }
+	
+	func resetValues() {
+
+		theCount = 0
+		add = false
+		subtract = false
+		multiply = false
+		divide = false
+		secondValueReady = 0
+		calculate = false
+	}
     
-    func calculateResult() {
+    func calculateResult() -> String {
         
         var pos = 0
         var textToDisplay:String = ""
         var answer = 0
+		var answerString = ""
         
         textToDisplay = convertArrayToString()
         
         secondValue = secondValueString.toInt()!
         
-        if (theCount == 2) {
+        if (secondValueReady == 2 || calculate == true) {
             
             if (add == true) {
                 answer = firstValue + secondValue
-                add = false
             } else if (subtract == true) {
                 answer = firstValue - secondValue
-                subtract = false
             } else if (multiply == true) {
                 answer = firstValue * secondValue
-                multiply = false
             } else if (divide == true) {
                 answer = firstValue / secondValue
-                divide = false
             } else {
                 println("Reached the else clause")
             }
             
-            display.text = String(answer)
+			answerString = String(answer)
         }
+		
+		return answerString
     }
     
     
@@ -309,4 +330,3 @@ class ViewController: UIViewController {
     }
     
 }
-
