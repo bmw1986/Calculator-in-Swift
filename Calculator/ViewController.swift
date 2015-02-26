@@ -121,159 +121,79 @@ class ViewController: UIViewController {
     
     @IBAction func one(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "1"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "1"
-            secondValueString += "1"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "1" }	
+		displayText += "1"
+        theCount++
+		writeToDisplay()
     }
     
     @IBAction func two(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "2"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "2"
-            secondValueString += "2"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "2" }	
+		displayText += "2"
+        theCount++
+		writeToDisplay()
     }
     
     @IBAction func three(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "3"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "3"
-            secondValueString += "3"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "3" }	
+		displayText += "3"
+        theCount++
+		writeToDisplay()
     }
     
     @IBAction func four(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "4"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "4"
-            secondValueString += "4"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "4" }	
+		displayText += "4"
+        theCount++
+		writeToDisplay()
     }
     
     @IBAction func five(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "5"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "5"
-            secondValueString += "5"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "5" }	
+		displayText += "5"
+        theCount++
+		writeToDisplay()
     }
     
     @IBAction func six(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "6"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "6"
-            secondValueString += "6"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "6" }	
+		displayText += "6"
+        theCount++
+		writeToDisplay()
     }
     
     @IBAction func seven(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "7"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "7"
-            secondValueString += "7"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "7" }	
+		displayText += "7"
+        theCount++
+		writeToDisplay()
     }
     
     @IBAction func eight(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "8"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "8"
-            secondValueString += "8"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "8" }	
+		displayText += "8"
+        theCount++
+		writeToDisplay()
     }
     
     @IBAction func nine(sender: AnyObject) {
         
-        if (secondValueBool == false) {
-            displayText += "9"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "9"
-            secondValueString += "9"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
+		if secondValueBool == true { secondValueString += "9" }	
+		displayText += "9"
+        theCount++
+		writeToDisplay()
     }
     
     func writeToDisplay() {
-        
-        var text = ""
-        var newText = ""
-        
-        display.text = convertArrayToString()
-    }
-    
-    func convertArrayToString() -> String {
-        
-        return displayText
+       
+        display.text = displayText
     }
 	
 	func resetValues() {
@@ -337,3 +257,4 @@ class ViewController: UIViewController {
     }
     
 }
+
