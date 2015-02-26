@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     var secondValueBool = false
     var secondValueString = ""
 	var secondValueReady = 0
-    var secondValue = 0
     var writeAZero = false
     var displayText = ""
     
@@ -217,13 +216,10 @@ class ViewController: UIViewController {
     func calculateResult() -> String {
         
         var pos = 0
-        var textToDisplay:String = ""
-        var answer = 0
+		var answer = 0
 		var answerString = ""
         
-        textToDisplay = convertArrayToString()
-        
-        secondValue = secondValueString.toInt()!
+		var secondValue = secondValueString.toInt()!
         
         if (secondValueReady == 2 || calculate == true) {
             
@@ -240,7 +236,8 @@ class ViewController: UIViewController {
             }
             
 			answerString = String(answer)
-        }
+        } else {
+			answer = -0
 		
 		return answerString
     }
@@ -255,6 +252,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
 
