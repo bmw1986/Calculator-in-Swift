@@ -42,3 +42,9 @@ Some notes
   - When more than one number is pressed and then the + sign is pushed the + sign never shows up.
   - Calculations on single digit numbers works.
   - Multi digit numbers can't be used for calculations.
+  
+1/27
+
+  - Current Issues are as follows
+    - 2nd round of calculations don't work
+    - This is a result of the substring() function receiving nil
