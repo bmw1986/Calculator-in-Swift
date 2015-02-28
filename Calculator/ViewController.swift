@@ -31,8 +31,6 @@ class ViewController: UIViewController {
     
     @IBAction func clear(sender: AnyObject) {
         
-        writeToConsole("clear")
-        
         displayText.removeAll(keepCapacity: true)
         writeAZero = true
         add = false
@@ -40,6 +38,7 @@ class ViewController: UIViewController {
         multiply = false
         divide = false
         theCount = 0
+        writeToConsole("clear")
         writeToDisplay()
     }
     
@@ -47,9 +46,8 @@ class ViewController: UIViewController {
     
     @IBAction func backspace(sender: AnyObject) {
         
-        writeToConsole("backspace")
-        
         displayText = String(makeSubstring(startValue: 0,endValue: -1))
+        writeToConsole("backspace")
         writeToDisplay()
     }
     
@@ -57,11 +55,10 @@ class ViewController: UIViewController {
     
     @IBAction func enter(sender: AnyObject) {
     
-        writeToConsole("enter")
-        
-		calculate = true
+        calculate = true
         var answer = calculateResult()
 		display.text = answer
+        writeToConsole("enter")
 		resetValues()
     }
     
@@ -88,19 +85,16 @@ class ViewController: UIViewController {
     
     func digitButton(value: String) {
         
-        writeToConsole(value)
-        
         if secondValueBool == true { secondValueString += value }
         displayText += value
         theCount++
+        writeToConsole(value)
         writeToDisplay()
     }
     
     // Operator Buttons
     
     func operatorButton(value: String) {
-        
-        writeToConsole(value)
         
         println(value)
         if value == "+"      { add = true }
@@ -112,6 +106,7 @@ class ViewController: UIViewController {
         theCount = 0
         secondValueReady++
         secondValueBool = true
+        writeToConsole(value)
         writeToDisplay()
     }
     
