@@ -31,6 +31,8 @@ class ViewController: UIViewController {
     
     @IBAction func clear(sender: AnyObject) {
         
+        writeToConsole("clear")
+        
         displayText.removeAll(keepCapacity: true)
         writeAZero = true
         add = false
@@ -45,6 +47,8 @@ class ViewController: UIViewController {
     
     @IBAction func backspace(sender: AnyObject) {
         
+        writeToConsole("backspace")
+        
         displayText = String(makeSubstring(startValue: 0,endValue: -1))
         writeToDisplay()
     }
@@ -53,6 +57,8 @@ class ViewController: UIViewController {
     
     @IBAction func enter(sender: AnyObject) {
     
+        writeToConsole("enter")
+        
 		calculate = true
         var answer = calculateResult()
 		display.text = answer
@@ -82,6 +88,8 @@ class ViewController: UIViewController {
     
     func digitButton(value: String) {
         
+        writeToConsole(value)
+        
         if secondValueBool == true { secondValueString += value }
         displayText += value
         theCount++
@@ -91,11 +99,15 @@ class ViewController: UIViewController {
     // Operator Buttons
     
     func operatorButton(value: String) {
+        
+        writeToConsole(value)
+        
+        println(value)
+        if value == "+"      { add = true }
+        else if value == "-" { subtract = true }
+        else if value == "x" { multiply = true }
+        else if value == "/" { divide = true }
         displayText += value
-        if value == "add" { add = true }
-        else if value == "subtract" { subtract = true }
-        else if value == "multiply" { multiply = true }
-        else if value == "divide" { divide = true }
         firstValue = makeSubstring(startValue: 0, endValue: -theCount)
         theCount = 0
         secondValueReady++
@@ -110,18 +122,41 @@ class ViewController: UIViewController {
         display.text = displayText
     }
     
+    // Write to Console the current variable values
+    
+    func writeToConsole(buttonPressedIs: String) {
+        
+        println("/////////////////////////////////")
+        println("You pressed a \(buttonPressedIs)")
+        println("displayText =      \(displayText)")
+        println("add =              \(add)")
+        println("subtract =         \(subtract)")
+        println("multiply =          \(multiply)")
+        println("divide =            \(divide)")
+        println("theCount =          \(theCount)")
+        println("calculate =         \(displayText)")
+        println("operations =        \(operations)")
+        println("firstValue =        \(firstValue)")
+        println("secondValueBool =   \(secondValueBool)")
+        println("secondValueString = \(secondValueString)")
+        println("secondValueReady =  \(secondValueReady)")
+        println("writeAZero =        \(writeAZero)")
+    }
+    
     // Resets Variables
 	
 	func resetValues() {
 
 		theCount = 0
-		add = false
-		subtract = false
-		multiply = false
-		divide = false
-		secondValueReady = 0
+        add = false; subtract = false; multiply = false; divide = false
 		calculate = false
         displayText = ""
+        operations = 0
+        firstValue = 0
+   		secondValueReady = 0
+        secondValueString = ""
+        secondValueBool = false
+        writeAZero = false
 	}
 	
     // Makes a SubString
