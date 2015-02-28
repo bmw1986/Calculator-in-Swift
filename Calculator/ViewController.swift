@@ -10,9 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-   
-    @IBOutlet weak var display: UILabel!
-
+    // Definition of Variables
+    
     var add = false; var subtract = false; var multiply = false; var divide = false
     var operations = 0
     var theCount = 0
@@ -23,6 +22,12 @@ class ViewController: UIViewController {
 	var secondValueReady = 0
     var writeAZero = false
     var displayText = ""
+    
+    // Display
+    
+    @IBOutlet weak var display: UILabel!
+    
+    // Clear Button
     
     @IBAction func clear(sender: AnyObject) {
         
@@ -36,14 +41,15 @@ class ViewController: UIViewController {
         writeToDisplay()
     }
     
+    // Backspace Button
+    
     @IBAction func backspace(sender: AnyObject) {
         
-        //displayText.removeLast()
-		// Removes last char of the string displayText
         displayText = String(makeSubstring(startValue: 0,endValue: -1))
         writeToDisplay()
     }
     
+    // Calculate Button
     
     @IBAction func enter(sender: AnyObject) {
     
@@ -53,147 +59,58 @@ class ViewController: UIViewController {
 		resetValues()
     }
     
-    @IBAction func add(sender: AnyObject) {
+    // The other Buttons
+    
+    @IBAction func add(sender: AnyObject)       { operatorButton("+") }
+    @IBAction func subtract(sender: AnyObject)  { operatorButton("-") }
+    @IBAction func multiply(sender: AnyObject)  { operatorButton("x") }
+    @IBAction func divide(sender: AnyObject)    { operatorButton("/") }
+    
+    @IBAction func zero(sender: AnyObject)      { digitButton("0") }
+    @IBAction func one(sender: AnyObject)       { digitButton("1") }
+    @IBAction func two(sender: AnyObject)       { digitButton("2") }
+    @IBAction func three(sender: AnyObject)     { digitButton("3") }
+    @IBAction func four(sender: AnyObject)      { digitButton("4") }
+    @IBAction func five(sender: AnyObject)      { digitButton("5") }
+    @IBAction func six(sender: AnyObject)       { digitButton("6") }
+    @IBAction func seven(sender: AnyObject)     { digitButton("7") }
+    @IBAction func eight(sender: AnyObject)     { digitButton("8") }
+    @IBAction func nine(sender: AnyObject)      { digitButton("9") }
+    @IBAction func decimal(sender: AnyObject)   { digitButton("0") }
+    
+    // Digit Buttons
+    
+    func digitButton(value: String) {
         
-        displayText += "+"
-        add = true
+        if secondValueBool == true { secondValueString += value }
+        displayText += value
+        theCount++
+        writeToDisplay()
+    }
+    
+    // Operator Buttons
+    
+    func operatorButton(value: String) {
+        displayText += value
+        if value == "add" { add = true }
+        else if value == "subtract" { subtract = true }
+        else if value == "multiply" { multiply = true }
+        else if value == "divide" { divide = true }
         firstValue = makeSubstring(startValue: 0, endValue: -theCount)
         theCount = 0
-		secondValueReady++
+        secondValueReady++
         secondValueBool = true
         writeToDisplay()
     }
     
-    @IBAction func subtract(sender: AnyObject) {
-        
-        displayText += "-"
-        subtract = true
-        firstValue = makeSubstring(startValue: 0, endValue: -theCount)
-        theCount = 0
-		secondValueReady++
-        secondValueBool = true
-        writeToDisplay()
-    }
-    
-    @IBAction func multiply(sender: AnyObject) {
-        
-        displayText += "x"
-        multiply = true
-        firstValue = makeSubstring(startValue: 0, endValue: -theCount)
-        theCount = 0
-		secondValueReady++
-        secondValueBool = true
-        writeToDisplay()
-    }
-    
-    @IBAction func divide(sender: AnyObject) {
-        
-        displayText += "/"
-        divide = true
-        firstValue = makeSubstring(startValue: 0, endValue: -theCount)
-        theCount = 0
-		secondValueReady++
-        secondValueBool = true
-        writeToDisplay()
-    }
-    
-    @IBAction func decimal(sender: AnyObject) {
-        
-        writeToDisplay()
-    }
-    
-    @IBAction func zero(sender: AnyObject) {
-        
-        if (secondValueBool == false) {
-            displayText += "0"
-            theCount++
-            writeToDisplay()
-        } else if (secondValueBool == true) {
-            displayText += "0"
-            secondValueString += "0"
-            theCount++
-            writeToDisplay()
-        } else {
-            println("Error")
-        }
-    }
-    
-    @IBAction func one(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "1" }	
-		displayText += "1"
-        theCount++
-		writeToDisplay()
-    }
-    
-    @IBAction func two(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "2" }	
-		displayText += "2"
-        theCount++
-		writeToDisplay()
-    }
-    
-    @IBAction func three(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "3" }	
-		displayText += "3"
-        theCount++
-		writeToDisplay()
-    }
-    
-    @IBAction func four(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "4" }	
-		displayText += "4"
-        theCount++
-		writeToDisplay()
-    }
-    
-    @IBAction func five(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "5" }	
-		displayText += "5"
-        theCount++
-		writeToDisplay()
-    }
-    
-    @IBAction func six(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "6" }	
-		displayText += "6"
-        theCount++
-		writeToDisplay()
-    }
-    
-    @IBAction func seven(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "7" }	
-		displayText += "7"
-        theCount++
-		writeToDisplay()
-    }
-    
-    @IBAction func eight(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "8" }	
-		displayText += "8"
-        theCount++
-		writeToDisplay()
-    }
-    
-    @IBAction func nine(sender: AnyObject) {
-        
-		if secondValueBool == true { secondValueString += "9" }	
-		displayText += "9"
-        theCount++
-		writeToDisplay()
-    }
+    // Write to Display
     
     func writeToDisplay() {
-       
+        
         display.text = displayText
     }
+    
+    // Resets Variables
 	
 	func resetValues() {
 
@@ -207,6 +124,8 @@ class ViewController: UIViewController {
         displayText = ""
 	}
 	
+    // Makes a SubString
+    
 	func makeSubstring(startValue: Int = 0, endValue: Int = 0) -> Int {
 		
         var x:Int = 0
@@ -219,6 +138,8 @@ class ViewController: UIViewController {
 		
 		return x
 	}
+    
+    // Calculates the Result
     
     func calculateResult() -> String {
         
