@@ -13,8 +13,9 @@
 		B64AA7E11A9A232C006892BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64AA7E01A9A232C006892BA /* Images.xcassets */; };
 		B64AA7E41A9A232C006892BA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64AA7E21A9A232C006892BA /* LaunchScreen.xib */; };
 		B64AA7F01A9A232C006892BA /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64AA7EF1A9A232C006892BA /* CalculatorTests.swift */; };
-		B6B395741AA389750059EAE1 /* buttonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B395731AA389750059EAE1 /* buttonBackground.png */; };
 		B6B395761AA38EFF0059EAE1 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B395751AA38EFF0059EAE1 /* button.png */; };
+		B6B3957A1AA3B3B30059EAE1 /* buttonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B395791AA3B3B30059EAE1 /* buttonBackground.png */; };
+		B6B3957C1AA3B5330059EAE1 /* buttonBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B3957B1AA3B5330059EAE1 /* buttonBackgroundBlue.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +39,9 @@
 		B64AA7E91A9A232C006892BA /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64AA7EE1A9A232C006892BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64AA7EF1A9A232C006892BA /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
-		B6B395731AA389750059EAE1 /* buttonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonBackground.png; path = ../Icons/buttonBackground.png; sourceTree = "<group>"; };
 		B6B395751AA38EFF0059EAE1 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		B6B395791AA3B3B30059EAE1 /* buttonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBackground.png; sourceTree = "<group>"; };
+		B6B3957B1AA3B5330059EAE1 /* buttonBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBackgroundBlue.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +83,9 @@
 		B64AA7D61A9A232C006892BA /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				B6B395731AA389750059EAE1 /* buttonBackground.png */,
 				B6B395751AA38EFF0059EAE1 /* button.png */,
+				B6B395791AA3B3B30059EAE1 /* buttonBackground.png */,
+				B6B3957B1AA3B5330059EAE1 /* buttonBackgroundBlue.png */,
 				B64AA7D91A9A232C006892BA /* AppDelegate.swift */,
 				B64AA7DB1A9A232C006892BA /* ViewController.swift */,
 				B64AA7DD1A9A232C006892BA /* Main.storyboard */,
@@ -167,6 +170,7 @@
 				TargetAttributes = {
 					B64AA7D31A9A232C006892BA = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 29595JH583;
 					};
 					B64AA7E81A9A232C006892BA = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -198,11 +202,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6B3957A1AA3B3B30059EAE1 /* buttonBackground.png in Resources */,
 				B64AA7DF1A9A232C006892BA /* Main.storyboard in Resources */,
 				B6B395761AA38EFF0059EAE1 /* button.png in Resources */,
 				B64AA7E41A9A232C006892BA /* LaunchScreen.xib in Resources */,
 				B64AA7E11A9A232C006892BA /* Images.xcassets in Resources */,
-				B6B395741AA389750059EAE1 /* buttonBackground.png in Resources */,
+				B6B3957C1AA3B5330059EAE1 /* buttonBackgroundBlue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,9 +349,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -354,9 +363,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
