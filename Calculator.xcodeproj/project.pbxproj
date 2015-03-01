@@ -13,6 +13,7 @@
 		B64AA7E11A9A232C006892BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64AA7E01A9A232C006892BA /* Images.xcassets */; };
 		B64AA7E41A9A232C006892BA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64AA7E21A9A232C006892BA /* LaunchScreen.xib */; };
 		B64AA7F01A9A232C006892BA /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64AA7EF1A9A232C006892BA /* CalculatorTests.swift */; };
+		B6B395741AA389750059EAE1 /* buttonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B395731AA389750059EAE1 /* buttonBackground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		B64AA7E91A9A232C006892BA /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64AA7EE1A9A232C006892BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64AA7EF1A9A232C006892BA /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		B6B395731AA389750059EAE1 /* buttonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonBackground.png; path = ../Icons/buttonBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		B64AA7D61A9A232C006892BA /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				B6B395731AA389750059EAE1 /* buttonBackground.png */,
 				B64AA7D91A9A232C006892BA /* AppDelegate.swift */,
 				B64AA7DB1A9A232C006892BA /* ViewController.swift */,
 				B64AA7DD1A9A232C006892BA /* Main.storyboard */,
@@ -195,6 +198,7 @@
 				B64AA7DF1A9A232C006892BA /* Main.storyboard in Resources */,
 				B64AA7E41A9A232C006892BA /* LaunchScreen.xib in Resources */,
 				B64AA7E11A9A232C006892BA /* Images.xcassets in Resources */,
+				B6B395741AA389750059EAE1 /* buttonBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
