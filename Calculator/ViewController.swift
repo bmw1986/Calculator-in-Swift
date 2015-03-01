@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     // Definition of Variables
     
     var add = false; var subtract = false; var multiply = false; var divide = false
-    var operations = 0
     var theCount = 0
 	var calculate = false
     var firstValue = 0
@@ -22,6 +21,8 @@ class ViewController: UIViewController {
 	var secondValueReady = 0
     var writeAZero = false
     var displayText = ""
+    var answer = 0
+    var writeToConsole = false
     
     // Display
     
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
         multiply = false
         divide = false
         theCount = 0
-        writeToConsole("clear")
+        if writeToConsole == true { writeToConsole("clear") }
         writeToDisplay()
     }
     
@@ -46,8 +47,8 @@ class ViewController: UIViewController {
     
     @IBAction func backspace(sender: AnyObject) {
         
-        displayText = String(makeSubstring(startValue: 0,endValue: -1))
-        writeToConsole("backspace")
+        displayText = String(makeSubstring(0, endValue: -1))
+        if writeToConsole == true { writeToConsole("backspace") }
         writeToDisplay()
     }
     
@@ -58,7 +59,7 @@ class ViewController: UIViewController {
         calculate = true
         var answer = calculateResult()
 		display.text = answer
-        writeToConsole("enter")
+        if writeToConsole == true { writeToConsole("enter") }
 		resetValues()
     }
     
@@ -88,7 +89,7 @@ class ViewController: UIViewController {
         if secondValueBool == true { secondValueString += value }
         displayText += value
         theCount++
-        writeToConsole(value)
+        if writeToConsole == true { writeToConsole(value) }
         writeToDisplay()
     }
     
@@ -96,17 +97,17 @@ class ViewController: UIViewController {
     
     func operatorButton(value: String) {
         
-        println(value)
         if value == "+"      { add = true }
         else if value == "-" { subtract = true }
         else if value == "x" { multiply = true }
         else if value == "/" { divide = true }
         displayText += value
-        firstValue = makeSubstring(startValue: 0, endValue: -theCount)
+        if (theCount != 0) { firstValue = makeSubstring(0, endValue: -1) }
+        else if (theCount == 0) { firstValue = answer }       // sets Previous answer as firstValue
         theCount = 0
         secondValueReady++
         secondValueBool = true
-        writeToConsole(value)
+        if writeToConsole == true { writeToConsole(value) }
         writeToDisplay()
     }
     
@@ -130,7 +131,6 @@ class ViewController: UIViewController {
         println("divide =            \(divide)")
         println("theCount =          \(theCount)")
         println("calculate =         \(displayText)")
-        println("operations =        \(operations)")
         println("firstValue =        \(firstValue)")
         println("secondValueBool =   \(secondValueBool)")
         println("secondValueString = \(secondValueString)")
@@ -146,7 +146,6 @@ class ViewController: UIViewController {
         add = false; subtract = false; multiply = false; divide = false
 		calculate = false
         displayText = ""
-        operations = 0
         firstValue = 0
    		secondValueReady = 0
         secondValueString = ""
@@ -156,15 +155,9 @@ class ViewController: UIViewController {
 	
     // Makes a SubString
     
-	func makeSubstring(startValue: Int = 0, endValue: Int = 0) -> Int {
+	func makeSubstring(startValue: Int, endValue: Int) -> Int {
 		
-        var x:Int = 0
-        
-        if (theCount != 0) {
-            x = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, startValue), end: advance(displayText.endIndex, endValue))).toInt()!
-        } else {
-            x = 0
-        }
+        var x = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, startValue), end: advance(displayText.endIndex, endValue))).toInt()!
 		
 		return x
 	}
@@ -174,7 +167,6 @@ class ViewController: UIViewController {
     func calculateResult() -> String {
         
         var pos = 0
-		var answer = 0
 		var answerString = ""
         var secondValue = 0
         
