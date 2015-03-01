@@ -65,10 +65,11 @@ class ViewController: UIViewController {
     
     // The other Buttons
     
-    @IBAction func add(sender: AnyObject)       { operatorButton("+") }
-    @IBAction func subtract(sender: AnyObject)  { operatorButton("-") }
-    @IBAction func multiply(sender: AnyObject)  { operatorButton("x") }
-    @IBAction func divide(sender: AnyObject)    { operatorButton("/") }
+    @IBAction func add(sender: AnyObject)      { operatorButton("+") }
+    @IBAction func subtract(sender: AnyObject) { operatorButton("-") }
+    @IBAction func multiply(sender: AnyObject) { operatorButton("x") }
+    @IBAction func divide(sender: AnyObject)   { operatorButton("/") }
+    
     
     @IBAction func zero(sender: AnyObject)      { digitButton("0") }
     @IBAction func one(sender: AnyObject)       { digitButton("1") }
