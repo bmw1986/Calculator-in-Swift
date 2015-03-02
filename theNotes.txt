@@ -1,12 +1,12 @@
 Some notes
 
-1/24
+2/24
   - switch the array that is tracking what goes to the display to a [String] again.
   - then convert the Strings to Ints for calculation.
   - this will get rid of the issue of two digit numbers throwing of theCount
   - get rid of theCount...its stupid
   
-1/25
+2/25
   Goal is 223+48
   1. Button push 2
     a. Append a 2 to display      ->  display:String = "2"
@@ -36,15 +36,20 @@ Some notes
     e. if +-x/ pushed then store answer as firstValue
     f. Otherwise start over
 
-1/26
+2/26
 
   - When one number is added to another the + sign shows up but disappears once the second number is pushed.
   - When more than one number is pressed and then the + sign is pushed the + sign never shows up.
   - Calculations on single digit numbers works.
   - Multi digit numbers can't be used for calculations.
   
-1/27
+2/27
 
   - Current Issues are as follows
     - 2nd round of calculations don't work
     - This is a result of the substring() function receiving nil
+    
+3/2
+
+  - Check this out
+    - http://www.ioscreator.com/tutorials/calculator-tutorial-in-ios8-with-swift
