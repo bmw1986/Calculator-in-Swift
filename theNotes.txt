@@ -53,3 +53,4 @@ Some notes
 
   - Check this out
     - http://www.ioscreator.com/tutorials/calculator-tutorial-in-ios8-with-swift
+    - Will look into fixing the couple of bugs left in the logic in the comming week. 
