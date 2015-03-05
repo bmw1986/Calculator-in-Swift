@@ -47,7 +47,7 @@ Some notes
 
   - Current Issues are as follows
     - 2nd round of calculations don't work
-    - This is a result of the substring() function receiving nil
+    - This is a result of the substring() function receiving nil.
     
 3/2
 
