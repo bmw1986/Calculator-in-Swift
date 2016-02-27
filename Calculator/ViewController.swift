@@ -57,7 +57,7 @@ class ViewController: UIViewController {
     @IBAction func enter(sender: AnyObject) {
     
         calculate = true
-        var answer = calculateResult()
+        let answer = calculateResult()
 		display.text = answer
         if writeToConsole == true { writeToConsole("enter") }
 		resetValues()
@@ -123,20 +123,20 @@ class ViewController: UIViewController {
     
     func writeToConsole(buttonPressedIs: String) {
         
-        println("/////////////////////////////////")
-        println("You pressed a \(buttonPressedIs)")
-        println("displayText =      \(displayText)")
-        println("add =              \(add)")
-        println("subtract =         \(subtract)")
-        println("multiply =          \(multiply)")
-        println("divide =            \(divide)")
-        println("theCount =          \(theCount)")
-        println("calculate =         \(displayText)")
-        println("firstValue =        \(firstValue)")
-        println("secondValueBool =   \(secondValueBool)")
-        println("secondValueString = \(secondValueString)")
-        println("secondValueReady =  \(secondValueReady)")
-        println("writeAZero =        \(writeAZero)")
+        print("/////////////////////////////////")
+        print("You pressed a \(buttonPressedIs)")
+        print("displayText =      \(displayText)")
+        print("add =              \(add)")
+        print("subtract =         \(subtract)")
+        print("multiply =          \(multiply)")
+        print("divide =            \(divide)")
+        print("theCount =          \(theCount)")
+        print("calculate =         \(displayText)")
+        print("firstValue =        \(firstValue)")
+        print("secondValueBool =   \(secondValueBool)")
+        print("secondValueString = \(secondValueString)")
+        print("secondValueReady =  \(secondValueReady)")
+        print("writeAZero =        \(writeAZero)")
     }
     
     // Resets Variables
@@ -158,7 +158,7 @@ class ViewController: UIViewController {
     
 	func makeSubstring(startValue: Int, endValue: Int) -> Int {
 		
-        var x = displayText.substringWithRange(Range<String.Index>(start: advance(displayText.startIndex, startValue), end: advance(displayText.endIndex, endValue))).toInt()!
+        let x = Int(displayText.substringWithRange(Range<String.Index>(start: displayText.startIndex.advancedBy(startValue), end: displayText.endIndex.advancedBy(endValue))))!
 		
 		return x
 	}
@@ -172,7 +172,7 @@ class ViewController: UIViewController {
         var secondValue = 0
         
         if (secondValueString != "") {
-            secondValue = secondValueString.toInt()!
+            secondValue = Int(secondValueString)!
         } else {
             secondValue = 0
         }
@@ -187,8 +187,9 @@ class ViewController: UIViewController {
                 answer = firstValue * secondValue
             } else if (divide == true) {
                 answer = firstValue / secondValue
+
             } else {
-                println("Reached the else clause")
+                print("Reached the else clause")
             }
             
 			answerString = String(answer)
