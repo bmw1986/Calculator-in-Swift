@@ -9,206 +9,95 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    // Definition of Variables
     
-    var add = false; var subtract = false; var multiply = false; var divide = false
-    var theCount = 0
-	var calculate = false
-    var firstValue = 0
-    var secondValueBool = false
-    var secondValueString = ""
-	var secondValueReady = 0
-    var writeAZero = false
-    var displayText = ""
-    var answer = 0
-    var writeToConsole = false
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    // Display
+    var rawNum = [Int]()            // array for raw numbers for which calculations will be performed on
+    var firNum = 0                  // first number to be calculated on
+    var secNum = 0                  // second number to be calculated on
+    var add, sub, mul, div = false  // bools are for the different opperators
+    var firNumFlag = 1              // if first number entered then 1 otherwise 0
+    var displayText = ""            // To be displayed on "screen"
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     @IBOutlet weak var display: UILabel!
     
-    // Clear Button
+    @IBAction func clear(sender: AnyObject) { clearEverything() }
+    @IBAction func backspace(sender: AnyObject) {   }
+    @IBAction func enter(sender: AnyObject) {   }
     
-    @IBAction func clear(sender: AnyObject) {
-        
-        displayText.removeAll(keepCapacity: true)
-        writeAZero = true
-        add = false
-        subtract = false
-        multiply = false
-        divide = false
-        theCount = 0
-        if writeToConsole == true { writeToConsole("clear") }
-        writeToDisplay()
+    @IBAction func add(sender: AnyObject)      { doWeCalcYet(1) }
+    @IBAction func subtract(sender: AnyObject) { doWeCalcYet(2) }
+    @IBAction func multiply(sender: AnyObject) { doWeCalcYet(3) }
+    @IBAction func divide(sender: AnyObject)   { doWeCalcYet(4) }
+    
+    @IBAction func zero(sender: AnyObject)      { append_rawNum(0) }
+    @IBAction func one(sender: AnyObject)       { append_rawNum(1) }
+    @IBAction func two(sender: AnyObject)       { append_rawNum(2) }
+    @IBAction func three(sender: AnyObject)     { append_rawNum(3) }
+    @IBAction func four(sender: AnyObject)      { append_rawNum(4) }
+    @IBAction func five(sender: AnyObject)      { append_rawNum(5) }
+    @IBAction func six(sender: AnyObject)       { append_rawNum(6) }
+    @IBAction func seven(sender: AnyObject)     { append_rawNum(7) }
+    @IBAction func eight(sender: AnyObject)     { append_rawNum(8) }
+    @IBAction func nine(sender: AnyObject)      { append_rawNum(9) }
+    @IBAction func decimal(sender: AnyObject)   { append_rawNum(0) }
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    func isValid(opp: bool, data: String) {
+        // Determines if the button pushed is valid
     }
     
-    // Backspace Button
-    
-    @IBAction func backspace(sender: AnyObject) {
-        
-        displayText = String(makeSubstring(0, endValue: -1))
-        if writeToConsole == true { writeToConsole("backspace") }
-        writeToDisplay()
+    func calculate() {
+        // checks to see what opp is true
+        // puts current value into secNum
+        // performs calculation
+        // displays result
+        // puts result into firNum
+        // clears the opps
     }
     
-    // Calculate Button
-    
-    @IBAction func enter(sender: AnyObject) {
-    
-        calculate = true
-        let answer = calculateResult()
-		display.text = answer
-        if writeToConsole == true { writeToConsole("enter") }
-		resetValues()
+    func clear_rawNum() {
+        // clears the value of rawNum
+        // rawNum = []
     }
     
-    // The other Buttons
-    
-    @IBAction func add(sender: AnyObject)      { operatorButton("+") }
-    @IBAction func subtract(sender: AnyObject) { operatorButton("-") }
-    @IBAction func multiply(sender: AnyObject) { operatorButton("x") }
-    @IBAction func divide(sender: AnyObject)   { operatorButton("/") }
-    
-    
-    @IBAction func zero(sender: AnyObject)      { digitButton("0") }
-    @IBAction func one(sender: AnyObject)       { digitButton("1") }
-    @IBAction func two(sender: AnyObject)       { digitButton("2") }
-    @IBAction func three(sender: AnyObject)     { digitButton("3") }
-    @IBAction func four(sender: AnyObject)      { digitButton("4") }
-    @IBAction func five(sender: AnyObject)      { digitButton("5") }
-    @IBAction func six(sender: AnyObject)       { digitButton("6") }
-    @IBAction func seven(sender: AnyObject)     { digitButton("7") }
-    @IBAction func eight(sender: AnyObject)     { digitButton("8") }
-    @IBAction func nine(sender: AnyObject)      { digitButton("9") }
-    @IBAction func decimal(sender: AnyObject)   { digitButton("0") }
-    
-    // Digit Buttons
-    
-    func digitButton(value: String) {
-        
-        if secondValueBool == true { secondValueString += value }
-        displayText += value
-        theCount++
-        if writeToConsole == true { writeToConsole(value) }
-        writeToDisplay()
+    func append_rawNum(num: Int) {
+        // appends whatever button is pressed to the array rawNum
+        // rawNum.append(#)
     }
     
-    // Operator Buttons
-    
-    func operatorButton(value: String) {
-        
-        if value == "+"      { add = true }
-        else if value == "-" { subtract = true }
-        else if value == "x" { multiply = true }
-        else if value == "/" { divide = true }
-        displayText += value
-        if (theCount != 0) { firstValue = makeSubstring(0, endValue: -1) }
-        else if (theCount == 0) { firstValue = answer }       // sets Previous answer as firstValue
-        theCount = 0
-        secondValueReady++
-        secondValueBool = true
-        if writeToConsole == true { writeToConsole(value) }
-        writeToDisplay()
+    func setOpp(opp: Int) {
+        // set bool to opperator pressed
+        // put current rawNum into either firNum or secNum
+        // sets all other opps to false
     }
     
-    // Write to Display
+    func clearOpps() {
+        // sets all opps to false
+    }
     
-    func writeToDisplay() {
-        
+    func doWeCalcYet(opp: Int) {
+        // Desides if we already have a opp set to true
+        // if we do then do calculation
+        // else set the opp to true eith setOpp func
+    }
+    
+    func clearEverything() {
+        // clears the contents of firNum, secNum, firNumFlag, rawNum, all opps, displayText
+    }
+    
+    func storeNum() {
+        // stores the rawNum to either firNum or secNum depending on the firNumFlag status
+    }
+    
+    func writeToDisplay(valueToAdd: String) {
+        displayText += valueToAdd
         display.text = displayText
     }
     
-    // Write to Console the current variable values
-    
-    func writeToConsole(buttonPressedIs: String) {
-        
-        print("/////////////////////////////////")
-        print("You pressed a \(buttonPressedIs)")
-        print("displayText =      \(displayText)")
-        print("add =              \(add)")
-        print("subtract =         \(subtract)")
-        print("multiply =          \(multiply)")
-        print("divide =            \(divide)")
-        print("theCount =          \(theCount)")
-        print("calculate =         \(displayText)")
-        print("firstValue =        \(firstValue)")
-        print("secondValueBool =   \(secondValueBool)")
-        print("secondValueString = \(secondValueString)")
-        print("secondValueReady =  \(secondValueReady)")
-        print("writeAZero =        \(writeAZero)")
-    }
-    
-    // Resets Variables
-	
-	func resetValues() {
-
-		theCount = 0
-        add = false; subtract = false; multiply = false; divide = false
-		calculate = false
-        displayText = ""
-        firstValue = 0
-   		secondValueReady = 0
-        secondValueString = ""
-        secondValueBool = false
-        writeAZero = false
-	}
-	
-    // Makes a SubString
-    
-	func makeSubstring(startValue: Int, endValue: Int) -> Int {
-		
-        let x = Int(displayText.substringWithRange(Range<String.Index>(start: displayText.startIndex.advancedBy(startValue), end: displayText.endIndex.advancedBy(endValue))))!
-		
-		return x
-	}
-    
-    // Calculates the Result
-    
-    func calculateResult() -> String {
-        
-        var pos = 0
-		var answerString = ""
-        var secondValue = 0
-        
-        if (secondValueString != "") {
-            secondValue = Int(secondValueString)!
-        } else {
-            secondValue = 0
-        }
-        
-        if (secondValueReady == 2 || calculate == true) {
-            
-            if (add == true) {
-                answer = firstValue + secondValue
-            } else if (subtract == true) {
-                answer = firstValue - secondValue
-            } else if (multiply == true) {
-                answer = firstValue * secondValue
-            } else if (divide == true) {
-                answer = firstValue / secondValue
-
-            } else {
-                print("Reached the else clause")
-            }
-            
-			answerString = String(answer)
-        } else {
-			answer = -0
-        }
-
-        resetValues()
-        return answerString
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
