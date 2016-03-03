@@ -13,11 +13,15 @@ class ViewController: UIViewController {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     var rawNum = [Int]()            // array for raw numbers for which calculations will be performed on
-    var firNum = 0                  // first number to be calculated on
+    var firNum = 1                  // first number to be calculated on
     var secNum = 0                  // second number to be calculated on
-    var add, sub, mul, div = false  // bools are for the different opperators
+    var add = false                 // bools are for the different opperators
+    var sub = false                 // '' ''
+    var mul = false                 // '' ''
+    var div = false                 // '' ''
     var firNumFlag = 1              // if first number entered then 1 otherwise 0
     var displayText = ""            // To be displayed on "screen"
+    var i = 0
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -48,7 +52,7 @@ class ViewController: UIViewController {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
-    func isValid(opp: bool, data: String) {
+    func isValid(opp: Bool, data: String) {
         // Determines if the button pushed is valid
     }
     
@@ -67,8 +71,10 @@ class ViewController: UIViewController {
     }
     
     func append_rawNum(num: Int) {
-        // appends whatever button is pressed to the array rawNum
-        // rawNum.append(#)
+        var myString = ""
+        rawNum.append(num)
+        myString = String(num)
+        writeToDisplay(myString)
     }
     
     func setOpp(opp: Int) {
@@ -78,26 +84,71 @@ class ViewController: UIViewController {
     }
     
     func clearOpps() {
-        // sets all opps to false
+        add = false
+        sub = false
+        mul = false
+        div = false
     }
     
     func doWeCalcYet(opp: Int) {
         // Desides if we already have a opp set to true
         // if we do then do calculation
         // else set the opp to true eith setOpp func
+        storeNum()
     }
     
     func clearEverything() {
-        // clears the contents of firNum, secNum, firNumFlag, rawNum, all opps, displayText
+        displayText = ""
+        writeToDisplay("")
     }
     
     func storeNum() {
-        // stores the rawNum to either firNum or secNum depending on the firNumFlag status
+        let rawInt = 0
+        var finalInt = 0
+        var rawString = ""
+        var finalString = ""
+        
+        if (firNumFlag == 1) {
+            for (var i=0; i < rawNum.count; i++) {
+                rawNum[i] = rawInt
+                rawString = String(rawInt)
+                finalString += rawString
+                print("rawNum[i] is:")
+                print(rawNum[i])
+            }
+            finalInt = Int(rawString)!
+            firNum = finalInt
+            print("This is firNum: ")
+            print(firNum)
+            firNumFlag = 0
+        } else {
+            for (var i=0; i < rawNum.count; i++) {
+                rawNum[i] = rawInt
+                rawString = String(rawInt)
+                finalString += rawString
+                print("rawNum[i] is:")
+                print(rawNum[i])
+            }
+            finalInt = Int(rawString)!
+            secNum = finalInt
+            print("This is secNum: ")
+            print(secNum)
+        }
     }
     
     func writeToDisplay(valueToAdd: String) {
         displayText += valueToAdd
         display.text = displayText
     }
-    
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
